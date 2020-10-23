@@ -8,13 +8,14 @@ namespace BinarySearchTreeProgram
     {
         Node<T> Root;
         Node<T> Current;
-        
+        int count = 0;
         public void InsertData(T data)
         {
             if (Root == null)
             {
                 this.Root = new Node<T>(data);
                 this.Current = Root;
+                count++;
                 return;
             }
             if (this.Current.NodeValue.CompareTo(data) > 0)
@@ -23,6 +24,7 @@ namespace BinarySearchTreeProgram
                 {
                     this.Current.LeftNode = new Node<T>(data);
                     this.Current = Root;
+                    count++;
 
                 }
                 else
@@ -37,6 +39,7 @@ namespace BinarySearchTreeProgram
                 {
                     this.Current.RightNode = new Node<T>(data);
                     this.Current = Root;
+                    count++;
                 }
                 else
                 {
@@ -59,6 +62,10 @@ namespace BinarySearchTreeProgram
                 Display(node.RightNode);
             }
 
+        }
+        public int GetSize()
+        {
+            return count;
         }
     }
   }
