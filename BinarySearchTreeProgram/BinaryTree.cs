@@ -9,6 +9,7 @@ namespace BinarySearchTreeProgram
         Node<T> Root;
         Node<T> Current;
         int count = 0;
+        bool result = false;
         public void InsertData(T data)
         {
             if (Root == null)
@@ -67,5 +68,35 @@ namespace BinarySearchTreeProgram
         {
             return count;
         }
+
+        public bool SearchTree(int data, Node<T> node)
+        {
+            
+            if (node == null)
+            {
+                return false;
+            }
+            else
+            {
+                if (this.Current.NodeValue.Equals(data))
+                {
+                    result = true;
+                }
+                else if (this.Current.NodeValue.CompareTo(data) > 0)
+                {
+                    this.Current = this.Current.LeftNode;
+                    SearchTree(data, Current);
+                }
+                else
+                {
+                    this.Current = this.Current.RightNode;
+                    SearchTree(data, Current);
+                }
+
+                return result;
+            }
+        }
+
     }
-  }
+}
+
